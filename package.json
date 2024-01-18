@@ -1,0 +1,15 @@
+{
+  "name": "books-app",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "rsbuild dev --open",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview",
+    "lint": "npx eslint ."
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^0.3.3",
+    "eslint": "^8.56.0"
+  }
+}
