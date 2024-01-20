@@ -1,4 +1,5 @@
 import { MainView } from '../views/main/main';
+import './app.css';
 
 export class App {
   routes = [
