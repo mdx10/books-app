@@ -9,6 +9,11 @@ export class Search extends DivComponent {
     this.state = state;
   }
 
+  search() {
+    const { value } = this.el.querySelector('input');
+    this.state.searchQuery = value;
+  }
+
   render() {
     this.el.classList.add('search');
     this.el.innerHTML = `
@@ -25,6 +30,10 @@ export class Search extends DivComponent {
         <img src="${searchWhite}" alt="search-icon" />
       </button>
     `;
+    this.el.querySelector('button').addEventListener('click', () => this.search());
+    this.el.querySelector('input').addEventListener('keydown', (e) => {
+      if (e.code === 'Enter') this.search();
+    });
     return this.el;
   }
 }
