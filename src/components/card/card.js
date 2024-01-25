@@ -8,11 +8,19 @@ export class Card extends DivComponent {
     super();
     this.appState = appState;
     this.cardState = cardState;
+    this.existInFavorites = this.appState.favorites.find(item => item === this.cardState.key);
+  }
+
+  toggleFavorites() {
+    if (this.existInFavorites) {
+      this.appState.favorites = this.appState.favorites.filter(item => item !== this.cardState.key);
+    } else {
+      this.appState.favorites.push(this.cardState.key);
+    }
   }
 
   render() {
     this.el.classList.add('card');
-    const existInFavorites = this.appState.favorites.find(item => item.key === this.cardState.key);
     this.el.innerHTML = `
       <div class="card__image">
         <img src="https://covers.openlibrary.org/b/olid/${this.cardState.cover_edition_key}-M.jpg" alt="book-cover" />
@@ -28,12 +36,13 @@ export class Card extends DivComponent {
           ${this.cardState.author_name ? this.cardState.author_name[0] : 'Не задано'}
         </div>
         <div class="card__footer">
-          <button class="card__button ${existInFavorites ? 'card__button--active' : ''}">
-            <img src="${existInFavorites ? favorites : favoritesWhite}" alt="favorites">
+          <button class="card__button ${this.existInFavorites ? 'card__button--active' : ''}">
+            <img src="${this.existInFavorites ? favorites : favoritesWhite}" alt="favorites">
           </button>
         </div>
       </div>
     `;
+    this.el.querySelector('button').addEventListener('click', () => this.toggleFavorites());
     return this.el;
   }
 }

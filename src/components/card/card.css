@@ -8,10 +8,14 @@
 .card__image {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background: #B8B8B8;
   padding-top: 10px;
-  height: 140px;
+  height: 200px;
+}
+
+.card__image img {
+  width: 140px;
 }
 
 .card__info {
