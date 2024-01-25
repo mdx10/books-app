@@ -8,14 +8,14 @@ export class Card extends DivComponent {
     super();
     this.appState = appState;
     this.cardState = cardState;
-    this.existInFavorites = this.appState.favorites.find(item => item === this.cardState.key);
+    this.existInFavorites = this.appState.favorites.find(item => item.key === this.cardState.key);
   }
 
   toggleFavorites() {
     if (this.existInFavorites) {
-      this.appState.favorites = this.appState.favorites.filter(item => item !== this.cardState.key);
+      this.appState.favorites = this.appState.favorites.filter(item => item.key !== this.cardState.key);
     } else {
-      this.appState.favorites.push(this.cardState.key);
+      this.appState.favorites.push(this.cardState);
     }
   }
 

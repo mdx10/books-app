@@ -1,9 +1,11 @@
+import { FavoritesView } from '../views/favorites/favorites';
 import { MainView } from '../views/main/main';
 import './app.css';
 
 export class App {
   routes = [
     { path: '', view: MainView },
+    { path: '#favorites', view: FavoritesView },
   ];
 
   appState = {
@@ -11,7 +13,7 @@ export class App {
   };
 
   constructor() {
-    document.addEventListener('hashchange', this.route.bind(this));
+    window.addEventListener('hashchange', this.route.bind(this));
     this.route();
   }
 
